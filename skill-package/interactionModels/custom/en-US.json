@@ -1,0 +1,277 @@
+{
+  "interactionModel": {
+    "languageModel": {
+      "invocationName": "my secretary",
+      "intents": [
+        {
+          "name": "AMAZON.CancelIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.HelpIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.StopIntent",
+          "samples": []
+        },
+        {
+          "name": "AddEventIntent",
+          "slots": [
+            {
+              "name": "EventName",
+              "type": "EventName",
+              "samples": [
+                "call it {EventName}",
+                "{EventName}"
+              ]
+            },
+            {
+              "name": "Date",
+              "type": "AMAZON.DATE",
+              "samples": [
+                "{Date}",
+                "on {Date}",
+                "at {Date}"
+              ]
+            },
+            {
+              "name": "Time",
+              "type": "AMAZON.TIME",
+              "samples": [
+                "{Time}"
+              ]
+            }
+          ],
+          "samples": [
+            "add an event",
+            "create an event",
+            "Schedule an {EventName}",
+            "New event on {Date}",
+            "Schedule an event for {Date} at {Time}",
+            "I want to make a new event on {Date}",
+            "I have an {EventName} on {Date} at {Time}",
+            "I want to add an event",
+            "I have an {EventName} at {Time}",
+            "Add an event at {Time} on {Date} called {EventName}",
+            "Add an event at {Time}"
+          ]
+        },
+        {
+          "name": "AMAZON.NavigateHomeIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.FallbackIntent",
+          "samples": []
+        },
+        {
+          "name": "DeleteEventIntent",
+          "slots": [
+            {
+              "name": "EventName",
+              "type": "EventName",
+              "samples": [
+                "{EventName}"
+              ]
+            },
+            {
+              "name": "Date",
+              "type": "AMAZON.DATE",
+              "samples": [
+                "{Date}"
+              ]
+            },
+            {
+              "name": "Time",
+              "type": "AMAZON.TIME",
+              "samples": [
+                "{Time}"
+              ]
+            }
+          ],
+          "samples": [
+            "delete an event",
+            "Cancel my {EventName} on {Date}",
+            "Delete my {EventName} on {Date}",
+            "Cancel my {EventName}",
+            "Delete my {EventName}",
+            "I want to delete an event",
+            "Cancel my {Time}",
+            "Can you delete the event called {EventName}",
+            "Delete the event on {Date} at {Time}",
+            "Cancel the event on {Date}",
+            "Cancel my {Time} {EventName} on {Date}"
+          ]
+        }
+      ],
+      "types": [
+        {
+          "values": [
+            {
+              "name": {
+                "value": "meeting",
+                "synonyms": [
+                  "zoom",
+                  "zoom meeting"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "doctor"
+              }
+            },
+            {
+              "name": {
+                "value": "appointment"
+              }
+            }
+          ],
+          "name": "EventName"
+        }
+      ]
+    },
+    "dialog": {
+      "intents": [
+        {
+          "name": "AddEventIntent",
+          "confirmationRequired": false,
+          "prompts": {},
+          "slots": [
+            {
+              "name": "EventName",
+              "type": "EventName",
+              "elicitationRequired": true,
+              "confirmationRequired": false,
+              "prompts": {
+                "elicitation": "Elicit.Slot.1002521769554.217275788822"
+              }
+            },
+            {
+              "name": "Date",
+              "type": "AMAZON.DATE",
+              "elicitationRequired": true,
+              "confirmationRequired": false,
+              "prompts": {
+                "elicitation": "Elicit.Slot.1002521769554.1066254936624"
+              }
+            },
+            {
+              "name": "Time",
+              "type": "AMAZON.TIME",
+              "elicitationRequired": true,
+              "confirmationRequired": false,
+              "prompts": {
+                "elicitation": "Elicit.Slot.1002521769554.1222218382977"
+              }
+            }
+          ]
+        },
+        {
+          "name": "DeleteEventIntent",
+          "confirmationRequired": true,
+          "prompts": {
+            "confirmation": "Confirm.Intent.195435361698"
+          },
+          "slots": [
+            {
+              "name": "EventName",
+              "type": "EventName",
+              "elicitationRequired": true,
+              "confirmationRequired": false,
+              "prompts": {
+                "elicitation": "Elicit.Slot.195435361698.1581075429533"
+              }
+            },
+            {
+              "name": "Date",
+              "type": "AMAZON.DATE",
+              "elicitationRequired": true,
+              "confirmationRequired": false,
+              "prompts": {
+                "elicitation": "Elicit.Slot.195435361698.926510496024"
+              }
+            },
+            {
+              "name": "Time",
+              "type": "AMAZON.TIME",
+              "elicitationRequired": true,
+              "confirmationRequired": false,
+              "prompts": {
+                "elicitation": "Elicit.Slot.195435361698.934941516843"
+              }
+            }
+          ]
+        }
+      ],
+      "delegationStrategy": "ALWAYS"
+    },
+    "prompts": [
+      {
+        "id": "Elicit.Slot.1002521769554.217275788822",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "What should I call the event?"
+          }
+        ]
+      },
+      {
+        "id": "Elicit.Slot.1002521769554.1222218382977",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "What time should I schedule it for?"
+          }
+        ]
+      },
+      {
+        "id": "Elicit.Slot.1002521769554.1066254936624",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "What day is this event?"
+          }
+        ]
+      },
+      {
+        "id": "Elicit.Slot.195435361698.1581075429533",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "what is the event called?"
+          }
+        ]
+      },
+      {
+        "id": "Elicit.Slot.195435361698.926510496024",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "What day is this event on?"
+          }
+        ]
+      },
+      {
+        "id": "Elicit.Slot.195435361698.934941516843",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "What time is this event?"
+          }
+        ]
+      },
+      {
+        "id": "Confirm.Intent.195435361698",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "I found a {EventName} on {Date} at {Time} . Is this the one I should delete?"
+          }
+        ]
+      }
+    ]
+  },
+  "version": "18"
+}
